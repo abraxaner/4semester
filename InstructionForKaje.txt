@@ -1,0 +1,9 @@
+Am besten startet man das Game in der Menu Scene. 
+
+Packages: Input System mit der Input Map; AI Navigation, Eflaton.SceneReference, Cinemachine, TextMeshPro, Timeline, Unity UI
+
+Das Basic Gameplay aus dem Unterricht ist in den jeweiligen Leveln zu finden. Alles wird über der GameController und PlayerMovement gemanaged. 
+UI Elemente sind auf UI Level & UI Menu zu finden. Sie erlauben die Navigation vom Menu zu den Leveln und umgekehrt. 
+In der Hierarchie ist das Menu in dem Canvas mit Panels zu finden, die CanvasGroups besitzen. 
+Hinzugefügt wurde ebenfalls ein Pause Menu. s.PauseCanvas. 
+
