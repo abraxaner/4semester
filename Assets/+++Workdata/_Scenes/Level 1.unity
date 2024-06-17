@@ -9780,7 +9780,7 @@ MonoBehaviour:
   defaultSpeed: 4
   sneakSpeed: 1
   sprintSpeed: 8
-  jumpForce: 50
+  jumpForce: 10
   transformRayStart: {fileID: 1191956753}
   rayLength: 0.5
   layerGroundCheck:

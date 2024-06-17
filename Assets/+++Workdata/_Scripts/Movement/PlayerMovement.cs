@@ -4,6 +4,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+
+    //Tryout Grounded
+    private bool isGrounded;
+
     // Private Variablen für Playermovement und Physik
     private Rigidbody rb; // Rigidbody
     private Vector2 inputVector; // Speichert Eingabevektor für Bewegung
@@ -98,13 +102,18 @@ public class PlayerMovement : MonoBehaviour
     
     void OnJump() 
     {
+        /* Debug.Log("JUMP!"); 
+         if (GroundCheck()) // Überprüfe, ob Player auf dem Boden ist
+         {
+             rb.velocity = new Vector3(0f, jumpForce, 0f); // Sprungkraft anwenden
+             Debug.Log("Velocity after jump: " + rb.velocity);
+         }*/
+
         Debug.Log("JUMP!"); 
-        if (GroundCheck()) // Überprüfe, ob Player auf dem Boden ist
+        if (isGrounded) // Überprüfe, ob Player auf dem Boden ist
         {
             rb.velocity = new Vector3(0f, jumpForce, 0f); // Sprungkraft anwenden
             Debug.Log("Velocity after jump: " + rb.velocity);
-
-
         }
     }
 
@@ -144,15 +153,23 @@ public class PlayerMovement : MonoBehaviour
         inputVector = inputValue.Get<Vector2>(); // Aktualisiere den Eingabevektor mit dem neuen Eingabewert
     }
 
-    bool GroundCheck() // Methode - überprüfe, ob der Spieler auf dem Boden ist
+  /*  bool GroundCheck() // Methode - überprüfe, ob der Spieler auf dem Boden ist
     {
         Debug.Log("U r grounded");
         // Führe einen Raycast aus, um den Boden unter dem Player zu überprüfen
-        return Physics.Raycast(transformRayStart.position, Vector3.down, rayLength, layerGroundCheck);
-        
+        return Physics.Raycast(transformRayStart.position, Vector3.down, rayLength, layerGroundCheck);   
+    }*/
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+            Debug.Log("is Grounded");
+        }
     }
 
-    
+
     bool SlopeCheck() // Methode, um zu überprüfen, ob der Slope begehbar ist
     {
         RaycastHit hit;
